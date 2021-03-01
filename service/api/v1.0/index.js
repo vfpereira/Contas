@@ -24,11 +24,22 @@ router.post('/', function (req, res, next) {
 
 router.get('/', function (req, res, next) {
   const accountModel = accountSchema
-  accountModel.find(function (err, account) {
+  accountModel.find(function (err, accounts) {
     if (err) {
       res.send({ error: true, msg: err })
     }
-    res.send({ error: false, msg: account, status: 200 })
+
+    const accountsFormatted = accounts.map(account => {
+      return {
+        Nome: account.name,
+        'Valor Original': account.originalValue,
+        'Valor Corrigido': account.value,
+        'Quantidade de dias de atraso': account.delayDays,
+        'Data de Pagamento': account.payday
+      }
+    })
+
+    res.send({ error: false, msg: accountsFormatted, status: 200 })
   })
 })
 
