@@ -4,8 +4,10 @@ const appExpress = express()
 const app = require('./app')
 const database = require('./config/db')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 try {
+  appExpress.use(cors())
   appExpress.use(bodyParser.urlencoded({ extended: false }))
   appExpress.use(bodyParser.json())
   // appExpress.use(express.static(resolve(__dirname, '..', 'client', 'dist')))
