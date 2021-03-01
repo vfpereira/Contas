@@ -12,7 +12,7 @@ const calcValue = function (value, dueDate, payday) {
 }
 
 const delayDays = function (dueDate, payday) {
-  const timeDifference = Math.abs(new Date(payday).getTime() - new Date(dueDate).getTime())
+  const timeDifference = new Date(payday).getTime() - new Date(dueDate).getTime()
   const differentDays = Math.ceil(timeDifference / (1000 * 3600 * 24))
   return differentDays > 0 ? differentDays : 0
 }
