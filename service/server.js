@@ -17,7 +17,7 @@ try {
 
 database.connect().then(function () {
   appExpress.listen(8088, function () {
-    console.log('Service listening on port 8080!')
+    console.log('Service listening on port 8088!')
   })
 }).catch(err => {
   console.log('Not possible connect ' + err)
